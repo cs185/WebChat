@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/chat.js"></script>
+    <script>
+        const webSocket = new WebSocket("ws://" + location.hostname + ":" + location.port + "/chatapp?&userId=$userId");
+    </script>
+</head>
+<body>
+    <div>
+        <p>Profile</p>
+        <p>Name: $name</p>
+    </div>
+    <div>
+        <p>My Groups:</p>
+        #foreach($entry in $joinedGroups.entrySet())
+        <button type="button" onclick="window.location.href='/group/$entry.key'" style="display: inline-block;">$entry.value</button>
+        <p style="display: inline-block;">$entry.key</p>
+        <br>
+        #end
+    </div>
+
+    <div>
+        <p>Join Group</p>
+        <input id="group-id" placeholder="type the group id">
+        <button id="btn-join">Join</button>
+    </div>
+
+    <div>
+        <p>Create Group</p>
+        <input id="group-name" placeholder="type the group name">
+        <button id="btn-create">Join</button>
+    </div>
+
+    <div>
+        <p>Personal Messages</p>
+        <input id="msg" placeholder="type the message">
+        <input id="user-id" placeholder="type the user's id">
+        <button id="btn-send">Send</button>
+    </div>
+
+    <div id="chatArea" style="border: 1px solid #000; margin-bottom: 10px;">
+    </div>
+</body>
+</html>
+
